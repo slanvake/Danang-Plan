@@ -41,6 +41,9 @@
             transform: translateY(-5px);
             box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
         }
+        .progress-bar {
+            transition: width 0.5s ease-in-out;
+        }
     </style>
 </head>
 <body class="text-gray-700">
@@ -108,6 +111,61 @@
             </div>
         </section>
 
+        <!-- Collaborative Savings Checklist Section -->
+        <section id="collaborative-savings" class="mb-12 p-6 bg-white rounded-xl shadow-lg">
+            <h2 class="text-3xl font-bold text-center mb-2 text-gray-800">✅ เช็คลิสต์เก็บเงินร่วมกัน (Real-time)</h2>
+            <p class="text-center text-gray-500 mb-4">แชร์ ID ของคุณให้แฟนเพื่อเข้ามาดูกระดานนี้ด้วยกัน!</p>
+            <p class="text-center text-xs text-gray-400 mb-6">Your User ID: <span id="userId" class="font-mono">Loading...</span></p>
+            
+            <div class="max-w-3xl mx-auto">
+                <!-- Progress Bar -->
+                <div class="mb-6">
+                    <div class="flex justify-between mb-1">
+                        <span class="text-base font-medium text-blue-700">ยอดรวมทั้งหมด</span>
+                        <span id="progressText" class="text-sm font-medium text-blue-700">Loading...</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-4">
+                        <div id="progressBar" class="bg-blue-600 h-4 rounded-full progress-bar" style="width: 0%"></div>
+                    </div>
+                </div>
+
+                <!-- User Name Inputs -->
+                 <div id="nameInputs" class="mb-6 grid grid-cols-1 md:grid-cols-2 gap-4 items-end">
+                    <div>
+                        <label for="person1Name" class="block text-sm font-medium text-gray-700">ชื่อของคุณ:</label>
+                        <input type="text" id="person1Name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" placeholder="ใส่ชื่อ...">
+                    </div>
+                    <div>
+                         <label for="person2Name" class="block text-sm font-medium text-gray-700">ชื่อของแฟน:</label>
+                        <input type="text" id="person2Name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" placeholder="รอแฟนใส่ชื่อ..." disabled>
+                    </div>
+                </div>
+
+
+                <!-- Monthly Checklist -->
+                <div id="savingsChecklist" class="space-y-4">
+                    <!-- Checklist items will be rendered here by JS -->
+                    <p class="text-center text-gray-500">กำลังโหลดข้อมูล...</p>
+                </div>
+            </div>
+        </section>
+
+        
+        <!-- Pre-trip Checklist Section -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">📋 Checklist ก่อนเดินทาง</h2>
+            <div class="max-w-2xl mx-auto bg-white p-6 rounded-xl shadow-lg">
+                <ul class="space-y-4">
+                    <li class="flex items-start"><span class="mr-3 text-2xl">🛂</span><div><b class="font-semibold">พาสปอร์ต:</b> ตรวจสอบให้แน่ใจว่ามีอายุเหลือไม่ต่ำกว่า 6 เดือน (คนไทยเที่ยวเวียดนามไม่ต้องใช้วีซ่า)</div></li>
+                    <li class="flex items-start"><span class="mr-3 text-2xl">✈️</span><div><b class="font-semibold">ตั๋วเครื่องบินและที่พัก:</b> จองล่วงหน้าจะได้ราคาดีที่สุด โดยเฉพาะช่วง Shoulder Season</div></li>
+                    <li class="flex items-start"><span class="mr-3 text-2xl">🛡️</span><div><b class="font-semibold">ประกันการเดินทาง:</b> แนะนำให้ทำไว้เพื่อความอุ่นใจ ครอบคลุมทั้งสุขภาพและทรัพย์สิน</div></li>
+                    <li class="flex items-start"><span class="mr-3 text-2xl">💰</span><div><b class="font-semibold">แลกเงิน:</b> แลกเงินดอง (VND) จากไทยไปบางส่วน และพกเงินบาทเผื่อไปแลกเพิ่มที่สนามบินหรือร้านทอง</div></li>
+                    <li class="flex items-start"><span class="mr-3 text-2xl">📱</span><div><b class="font-semibold">แอปพลิเคชัน:</b> โหลดแอป Grab (สำหรับเดินทาง), Google Maps (ดาวน์โหลดแผนที่ออฟไลน์) และ Google Translate ติดเครื่องไว้</div></li>
+                     <li class="flex items-start"><span class="mr-3 text-2xl">🔌</span><div><b class="font-semibold">ของใช้ส่วนตัว:</b> อย่าลืม Universal Adapter, ครีมกันแดด, หมวก, แว่นกันแดด และยาสามัญประจำตัว</div></li>
+                </ul>
+            </div>
+        </section>
+
         <!-- Accommodation Section -->
         <section class="mb-12">
             <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">🏨 ที่พักแนะนำ 3 สไตล์</h2>
@@ -132,7 +190,7 @@
 
         <!-- Itinerary Section -->
         <section class="mb-12">
-            <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">🗓️ แผนการเดินทาง 4 วัน 3 คืน</h2>
+            <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">🗓️ แผนการเดินทาง 4 วัน 3 คืน (ฉบับละเอียด)</h2>
 
             <!-- Tabs -->
             <div class="border-b border-gray-200 mb-6">
@@ -153,14 +211,14 @@
                             <div class="text-blue-600 font-bold w-24">☀️ บ่าย</div>
                             <div class="flex-1">
                                 <h4 class="font-bold text-lg">เดินทางถึงดานัง - เที่ยวภูเขาหินอ่อน</h4>
-                                <p>เดินทางถึงสนามบินดานัง เรียก Grab เข้าที่พัก/ฝากกระเป๋า จากนั้นไปเที่ยวภูเขาหินอ่อน (Marble Mountains) ชมถ้ำและวิวเมืองจากมุมสูง (แนะนำให้ขึ้นลิฟต์แก้ว)</p>
+                                <p>เดินทางถึงสนามบินดานัง เรียก Grab เข้าที่พัก/ฝากกระเป๋า จากนั้นไปเที่ยวภูเขาหินอ่อน (Marble Mountains) ชมถ้ำและวิวเมืองจากมุมสูง (แนะนำให้ขึ้นลิฟต์แก้วเพื่อประหยัดแรง)</p>
                             </div>
                         </a>
                         <a href="https://www.google.com/maps/search/?api=1&query=Hải%20sản%20Bé%20Mặn" target="_blank" rel="noopener noreferrer" class="plan-card p-6 flex items-start gap-4">
                              <div class="text-orange-500 font-bold w-24">🌙 เย็น</div>
                             <div class="flex-1">
                                 <h4 class="font-bold text-lg">เดินเล่นหาดหมีเคว - อาหารเย็น</h4>
-                                <p>ไปเดินเล่นรับลมทะเลที่หาดหมีเคว (My Khe Beach) หนึ่งในชายหาดที่สวยที่สุดในเวียดนาม จากนั้นทานอาหารเย็นที่ร้าน <span class="font-semibold">Hải sản Bé Mặn</span> ร้านอาหารทะเลสดๆ ที่เลือกของทะเลให้เขาปรุงได้เลย</p>
+                                <p>ไปเดินเล่นรับลมทะเลที่หาดหมีเคว (My Khe Beach) หนึ่งในชายหาดที่สวยที่สุดในเวียดนาม จากนั้นทานอาหารเย็นที่ร้าน <span class="font-semibold">Hải sản Bé Mặn</span> ร้านอาหารทะเลสดๆ ที่เลือกของทะเลให้เขาปรุงได้เลย (บอกแท็กซี่ว่าไป 'เบ๋-หมั่น' คนขับจะรู้จักดี)</p>
                             </div>
                         </a>
                         <a href="https://www.google.com/maps/search/?api=1&query=Dragon%20Bridge%2C%20Da%20Nang" target="_blank" rel="noopener noreferrer" class="plan-card p-6 flex items-start gap-4">
@@ -186,14 +244,14 @@
                              <div class="text-orange-500 font-bold w-24">☀️ บ่าย-เย็น</div>
                             <div class="flex-1">
                                 <h4 class="font-bold text-lg">เดินเล่นเมืองเก่าฮอยอัน</h4>
-                                <p>ดื่มด่ำกับบรรยากาศเมืองเก่า เดินชมบ้านโบราณ สะพานญี่ปุ่น จากนั้นทานอาหารกลางวันที่ร้านข้าวมันไก่ชื่อดัง <span class="font-semibold">Cơm Gà Bà Buội</span> แล้วเดินเล่นต่อ หรือเช่าจักรยานปั่นเล่นรอบๆ</p>
+                                <p>ดื่มด่ำกับบรรยากาศเมืองเก่า เดินชมบ้านโบราณ สะพานญี่ปุ่น (ต้องซื้อตั๋วเข้าชมเขตเมืองเก่า) จากนั้นทานอาหารกลางวันที่ร้านข้าวมันไก่ชื่อดัง <span class="font-semibold">Cơm Gà Bà Buội</span> หรือลองชิมบั๋นหมี่ที่ร้าน <span class="font-semibold">Bánh Mì Phượng</span> แล้วเดินเล่นต่อ หรือเช่าจักรยานปั่นเล่นรอบๆ</p>
                             </div>
                         </a>
                         <a href="https://www.google.com/maps/search/?api=1&query=Hoi%20An%20night%20market" target="_blank" rel="noopener noreferrer" class="plan-card p-6 flex items-start gap-4">
                              <div class="text-purple-600 font-bold w-24">🌙 ค่ำ</div>
                             <div class="flex-1">
                                 <h4 class="font-bold text-lg">ล่องเรือชมโคมไฟ - ตลาดกลางคืน</h4>
-                                <p>ไฮไลท์ของฮอยอัน! เมื่อเมืองทั้งเมืองประดับประดาไปด้วยโคมไฟหลากสีสัน แนะนำให้ล่องเรือเล็กในแม่น้ำเพื่อชมบรรยากาศสุดโรแมนติก จากนั้นเดินเล่นตลาดกลางคืนหาของกินและของฝาก ก่อนเดินทางกลับดานัง</p>
+                                <p>ไฮไลท์ของฮอยอัน! เมื่อเมืองทั้งเมืองประดับประดาไปด้วยโคมไฟหลากสีสัน แนะนำให้ล่องเรือเล็กในแม่น้ำเพื่อชมบรรยากาศสุดโรแมนติก จากนั้นเดินเล่นตลาดกลางคืนหาของกินเล่นอย่าง 'บั๋นจ่างเนื้อง' (พิซซ่าเวียดนาม) ก่อนเดินทางกลับดานัง</p>
                             </div>
                         </a>
                     </div>
@@ -212,6 +270,7 @@
                                     <li>ชมสวนดอกไม้ Le Jardin D'Amour</li>
                                     <li>เล่นเครื่องเล่นในสวนสนุก Fantasy Park</li>
                                 </ul>
+                                <p class="mt-2 text-sm text-amber-700"><b>Tip:</b> อาหารบนบานาฮิลล์มีราคาสูง ลองพิจารณาบุฟเฟ่ต์ที่มีให้เลือก หรือเตรียมขนม/ของว่างไปทานเอง</p>
                             </div>
                         </a>
                          <a href="https://www.google.com/maps/search/?api=1&query=Bếp%20Cuốn%20Đà%20Nẵng" target="_blank" rel="noopener noreferrer" class="plan-card p-6 flex items-start gap-4">
@@ -230,7 +289,7 @@
                             <div class="text-blue-600 font-bold w-24">☀️ เช้า</div>
                             <div class="flex-1">
                                 <h4 class="font-bold text-lg">ตลาดฮาน (Han Market)</h4>
-                                <p>ตื่นสายๆ ทานอาหารเช้า แล้วไปเดินเล่นที่ตลาดฮาน แหล่งซื้อของฝากยอดนิยม ทั้งเสื้อผ้า กระเป๋า ของกินต่างๆ</p>
+                                <p>ตื่นสายๆ ทานอาหารเช้า แล้วไปเดินเล่นที่ตลาดฮาน แหล่งซื้อของฝากยอดนิยม ทั้งเสื้อผ้า กระเป๋า ของกินต่างๆ (เช่น กาแฟ มะม่วงอบแห้ง)</p>
                             </div>
                         </a>
                          <a href="https://www.google.com/maps/search/?api=1&query=Cộng%20Cà%20Phê%2C%20Da%20Nang" target="_blank" rel="noopener noreferrer" class="plan-card p-6 flex items-start gap-4">
@@ -244,7 +303,7 @@
                              <div class="text-purple-600 font-bold w-24">✈️ บ่าย</div>
                             <div class="flex-1">
                                 <h4 class="font-bold text-lg">เดินทางกลับ</h4>
-                                <p>เดินทางไปยังสนามบินนานาชาติดานัง เพื่อเดินทางกลับโดยสวัสดิภาพ</p>
+                                <p>เดินทางไปยังสนามบินนานาชาติดานัง เผื่อเวลาเช็คอินและผ่านด่าน ตม. อย่างน้อย 2 ชั่วโมงก่อนเวลาเดินทาง</p>
                             </div>
                         </a>
                     </div>
@@ -252,119 +311,311 @@
             </div>
         </section>
 
-        <!-- Final Tips -->
+        <!-- Must-Try Food Section -->
         <section class="mb-12">
-             <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">💡 เกร็ดเล็กเกร็ดน้อย</h2>
-             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-                <div class="bg-white p-6 rounded-lg shadow">
-                    <h3 class="font-bold text-xl mb-2">📱 ซิมการ์ด</h3>
-                    <p>ซื้อซิมเวียดนามจากไทยไปล่วงหน้า หรือซื้อที่สนามบินดานังได้เลย สะดวกและราคาไม่แพง</p>
+            <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">🍜 เมนูเด็ด! อาหารท้องถิ่นที่ต้องลอง</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <div class="plan-card p-4 text-center">
+                    <h3 class="font-bold text-lg">Mì Quảng (หมี่กว่าง)</h3>
+                    <p class="text-sm">ก๋วยเตี๋ยวเส้นแบนหนานุ่ม คลุกเคล้ากับน้ำซุปขลุกขลิกรสชาติเข้มข้น</p>
                 </div>
+                <div class="plan-card p-4 text-center">
+                    <h3 class="font-bold text-lg">Bánh Xèo (บั๋นแส่ว)</h3>
+                    <p class="text-sm">ขนมเบื้องญวนแป้งกรอบสีเหลืองทอง ไส้แน่นด้วยกุ้งและถั่วงอก</p>
+                </div>
+                <div class="plan-card p-4 text-center">
+                    <h3 class="font-bold text-lg">Cao Lầu (เกาเหลา)</h3>
+                    <p class="text-sm">เมนูเฉพาะของฮอยอัน เส้นคล้ายอุด้ง ทานกับหมูแดงและผักสด</p>
+                </div>
+                <div class="plan-card p-4 text-center">
+                    <h3 class="font-bold text-lg">Cơm Gà (เกิมก่า)</h3>
+                    <p class="text-sm">ข้าวมันไก่สไตล์เวียดนาม ข้าวหุงกับน้ำซุปไก่และขมิ้นจนเป็นสีเหลือง</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final Tips Section -->
+        <section class="mb-12">
+             <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">💡 เรื่องน่ารู้และเคล็ดลับเพิ่มเติม</h2>
+             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
                 <div class="bg-white p-6 rounded-lg shadow">
                     <h3 class="font-bold text-xl mb-2">🚕 การเดินทาง</h3>
                     <p>ใช้แอป Grab เป็นหลัก สะดวก ปลอดภัย และราคามาตรฐาน ไม่ต้องต่อรอง</p>
                 </div>
+                 <div class="bg-white p-6 rounded-lg shadow">
+                    <h3 class="font-bold text-xl mb-2">🗣️ การต่อราคา</h3>
+                    <p>สามารถต่อราคาสินค้าในตลาดได้ประมาณ 30-50% แต่ควรทำด้วยรอยยิ้มนะครับ</p>
+                </div>
                 <div class="bg-white p-6 rounded-lg shadow">
-                    <h3 class="font-bold text-xl mb-2">💸 สกุลเงิน</h3>
-                    <p>ใช้เงินดอง (VND) แลกจากไทยไปบางส่วน หรือนำเงินบาท/ดอลลาร์ไปแลกที่สนามบินหรือร้านทองในเมือง</p>
+                    <h3 class="font-bold text-xl mb-2">💧 น้ำดื่ม</h3>
+                    <p>ควรดื่มน้ำจากขวดที่ปิดสนิทเท่านั้นเพื่อความปลอดภัย หลีกเลี่ยงน้ำแข็งหากไม่แน่ใจ</p>
                 </div>
              </div>
         </section>
 
     </main>
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    // Budget Chart
-    const budgetCtx = document.getElementById('budgetChart').getContext('2d');
-    const budgetDisplay = document.getElementById('total-budget-display');
-    let budgetChart;
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+    import { getAuth, signInAnonymously, onAuthStateChanged, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+    import { getFirestore, doc, getDoc, setDoc, updateDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-    const baseBudgetData = {
-        labels: ['ตั๋วเครื่องบิน (2 คน)', 'ที่พัก (3 คืน)', 'อาหาร (4 วัน)', 'กิจกรรม & เดินทาง'],
-        values: [9000, 4500, 4800, 2000]
-    };
+    const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : { apiKey: "DEMO", authDomain: "DEMO", projectId: "DEMO" };
+    const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+    
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
 
-    const banaHillsCost = 4000;
+    let currentUserId = null;
+    let savingsDocRef = null;
+    let savingsData = null;
+    let unsubscribe = null;
 
-    function createOrUpdateChart(includeBana) {
-        const data = {
-            labels: [...baseBudgetData.labels],
-            datasets: [{
-                data: [...baseBudgetData.values],
-                backgroundColor: ['#A78BFA', '#60A5FA', '#34D399', '#FBBF24'],
-                hoverBackgroundColor: ['#8B5CF6', '#3B82F6', '#10B981', '#F59E0B']
-            }]
+    document.addEventListener('DOMContentLoaded', () => {
+        // Budget Chart Logic
+        const budgetCtx = document.getElementById('budgetChart').getContext('2d');
+        const budgetDisplay = document.getElementById('total-budget-display');
+        let budgetChart;
+
+        const baseBudgetData = {
+            labels: ['ตั๋วเครื่องบิน (2 คน)', 'ที่พัก (3 คืน)', 'อาหาร (4 วัน)', 'กิจกรรม & เดินทาง'],
+            values: [9000, 4500, 4800, 2000]
         };
+        const banaHillsCost = 4000;
 
-        if (includeBana) {
-            data.labels.push('บานาฮิลล์');
-            data.datasets[0].data.push(banaHillsCost);
-            data.datasets[0].backgroundColor.push('#F87171');
-            data.datasets[0].hoverBackgroundColor.push('#EF4444');
-        }
-
-        const total = data.datasets[0].data.reduce((a, b) => a + b, 0);
-        budgetDisplay.innerHTML = `รวมประมาณ: ${total.toLocaleString('th-TH')} บาท`;
-
-        if (budgetChart) {
-            budgetChart.data = data;
-            budgetChart.update();
-        } else {
-            budgetChart = new Chart(budgetCtx, {
-                type: 'doughnut',
-                data: data,
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            position: 'bottom',
-                        },
-                        tooltip: {
-                             callbacks: {
-                                label: function(context) {
-                                    let label = context.label || '';
-                                    let value = context.raw || 0;
-                                    if (label) {
-                                        label += ': ';
+        function createOrUpdateChart(includeBana) {
+            const data = {
+                labels: [...baseBudgetData.labels],
+                datasets: [{
+                    data: [...baseBudgetData.values],
+                    backgroundColor: ['#A78BFA', '#60A5FA', '#34D399', '#FBBF24'],
+                    hoverBackgroundColor: ['#8B5CF6', '#3B82F6', '#10B981', '#F59E0B']
+                }]
+            };
+            if (includeBana) {
+                data.labels.push('บานาฮิลล์');
+                data.datasets[0].data.push(banaHillsCost);
+                data.datasets[0].backgroundColor.push('#F87171');
+                data.datasets[0].hoverBackgroundColor.push('#EF4444');
+            }
+            const total = data.datasets[0].data.reduce((a, b) => a + b, 0);
+            budgetDisplay.innerHTML = `รวมประมาณ: ${total.toLocaleString('th-TH')} บาท`;
+            if (budgetChart) {
+                budgetChart.data = data;
+                budgetChart.update();
+            } else {
+                budgetChart = new Chart(budgetCtx, {
+                    type: 'doughnut',
+                    data: data,
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { position: 'bottom' },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        let label = context.label || '';
+                                        let value = context.raw || 0;
+                                        if (label) { label += ': '; }
+                                        label += value.toLocaleString('th-TH') + ' บาท';
+                                        return label;
                                     }
-                                    label += value.toLocaleString('th-TH') + ' บาท';
-                                    return label;
                                 }
                             }
                         }
                     }
-                }
+                });
+            }
+        }
+        createOrUpdateChart(false);
+        document.getElementById('banaToggle').addEventListener('change', (e) => createOrUpdateChart(e.target.checked));
+
+        // Itinerary Tabs Logic
+        const tabs = document.querySelectorAll('.tab-button');
+        const panes = document.querySelectorAll('.tab-pane');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(item => item.classList.remove('active'));
+                tab.classList.add('active');
+                const target = tab.getAttribute('data-tab');
+                panes.forEach(pane => {
+                    if (pane.id === target) {
+                        pane.classList.remove('hidden');
+                    } else {
+                        pane.classList.add('hidden');
+                    }
+                });
             });
+        });
+
+        // Firebase Auth
+        onAuthStateChanged(auth, user => {
+            if (user) {
+                currentUserId = user.uid;
+                document.getElementById('userId').textContent = currentUserId;
+                setupSavingsTracker();
+            }
+        });
+        
+        async function signIn() {
+            try {
+                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                    await signInWithCustomToken(auth, __initial_auth_token);
+                } else {
+                    await signInAnonymously(auth);
+                }
+            } catch(e) {
+                console.error("Sign in failed:", e);
+            }
+        }
+        signIn();
+
+    });
+
+    async function setupSavingsTracker() {
+        savingsDocRef = doc(db, "artifacts", appId, "public/data/savingsPlan", "tripSavings");
+        
+        const docSnap = await getDoc(savingsDocRef);
+        if (!docSnap.exists()) {
+            await createInitialSavingsData();
+        }
+
+        unsubscribe = onSnapshot(savingsDocRef, (doc) => {
+            savingsData = doc.data();
+            renderSavingsChecklist(savingsData);
+        });
+    }
+
+    function createInitialSavingsData() {
+        const months = [];
+        const monthNames = ["มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน"];
+        const year = 2026;
+        for(let i=0; i < 6; i++) {
+            months.push({
+                month: `${monthNames[i]} ${year}`,
+                person1_saved: 0,
+                person2_saved: 0,
+            });
+        }
+
+        const initialData = {
+            targetAmount: 30000,
+            person1: { name: "User 1", uid: "" },
+            person2: { name: "User 2", uid: "" },
+            months: months
+        };
+        return setDoc(savingsDocRef, initialData);
+    }
+
+    function renderSavingsChecklist(data) {
+        if (!data) return;
+
+        const checklistContainer = document.getElementById('savingsChecklist');
+        const name1Input = document.getElementById('person1Name');
+        const name2Input = document.getElementById('person2Name');
+
+        let totalSaved = 0;
+        let isCurrentUserPerson1 = false;
+        let isCurrentUserPerson2 = false;
+
+        // Assign user slot
+        if (data.person1.uid === currentUserId || (data.person1.uid === "" && data.person2.uid !== currentUserId)) {
+            isCurrentUserPerson1 = true;
+        } else if (data.person2.uid === currentUserId || data.person2.uid === "") {
+            isCurrentUserPerson2 = true;
+        }
+        
+        // Render names
+        name1Input.value = data.person1.name;
+        name2Input.value = data.person2.name;
+
+        name1Input.disabled = !isCurrentUserPerson1;
+        name2Input.disabled = !isCurrentUserPerson2;
+        
+        if(isCurrentUserPerson1 && data.person1.uid === "") {
+             name1Input.addEventListener('change', handleNameChange, { once: true });
+        } else if (isCurrentUserPerson2 && data.person2.uid === "") {
+             name2Input.addEventListener('change', handleNameChange, { once: true });
+        }
+
+
+        // Render checklist
+        checklistContainer.innerHTML = '';
+        data.months.forEach((monthData, index) => {
+            const p1Saved = monthData.person1_saved || 0;
+            const p2Saved = monthData.person2_saved || 0;
+            totalSaved += p1Saved + p2Saved;
+
+            const monthEl = document.createElement('div');
+            monthEl.className = 'p-4 border rounded-lg bg-gray-50';
+            monthEl.innerHTML = `
+                <h4 class="font-bold text-lg mb-3">${monthData.month}</h4>
+                <div class="space-y-3">
+                    <!-- Person 1 -->
+                    <div class="flex items-center gap-4">
+                        <label for="p1_check_${index}" class="w-1/3 truncate">${data.person1.name}</label>
+                        <input type="number" id="p1_amount_${index}" value="${p1Saved}" class="w-1/3 rounded-md border-gray-300" ${!isCurrentUserPerson1 ? 'disabled' : ''}>
+                        <button data-person="1" data-index="${index}" class="save-btn bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded-md text-sm" ${!isCurrentUserPerson1 ? 'disabled' : ''}>บันทึก</button>
+                    </div>
+                    <!-- Person 2 -->
+                    <div class="flex items-center gap-4">
+                        <label for="p2_check_${index}" class="w-1/3 truncate">${data.person2.name}</label>
+                        <input type="number" id="p2_amount_${index}" value="${p2Saved}" class="w-1/3 rounded-md border-gray-300" ${!isCurrentUserPerson2 ? 'disabled' : ''}>
+                        <button data-person="2" data-index="${index}" class="save-btn bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded-md text-sm" ${!isCurrentUserPerson2 ? 'disabled' : ''}>บันทึก</button>
+                    </div>
+                </div>
+            `;
+            checklistContainer.appendChild(monthEl);
+        });
+
+        // Update progress bar
+        const progress = Math.min((totalSaved / data.targetAmount) * 100, 100);
+        document.getElementById('progressBar').style.width = `${progress}%`;
+        document.getElementById('progressText').textContent = `${totalSaved.toLocaleString('th-TH')} / ${data.targetAmount.toLocaleString('th-TH')} บาท`;
+
+        // Add event listeners
+        document.querySelectorAll('.save-btn').forEach(button => {
+            button.addEventListener('click', handleSaveAmount);
+        });
+    }
+
+    async function handleNameChange(event) {
+        const input = event.target;
+        const newName = input.value.trim();
+        if(!newName || !savingsData) return;
+        
+        let updateData = {};
+        if(input.id === 'person1Name' && savingsData.person1.uid === "") {
+            updateData = { person1: { name: newName, uid: currentUserId } };
+        } else if (input.id === 'person2Name' && savingsData.person2.uid === "") {
+            updateData = { person2: { name: newName, uid: currentUserId } };
+        }
+        
+        if (Object.keys(updateData).length > 0) {
+            await updateDoc(savingsDocRef, updateData);
         }
     }
 
-    createOrUpdateChart(false); 
+    async function handleSaveAmount(event) {
+        const button = event.target;
+        const person = button.dataset.person;
+        const index = parseInt(button.dataset.index, 10);
+        
+        const amountInput = document.getElementById(`p${person}_amount_${index}`);
+        const savedAmount = parseInt(amountInput.value, 10) || 0;
 
-    document.getElementById('banaToggle').addEventListener('change', (e) => {
-        createOrUpdateChart(e.target.checked);
-    });
+        if (savingsData) {
+            const updatedMonths = [...savingsData.months];
+            if (person === '1') {
+                updatedMonths[index].person1_saved = savedAmount;
+            } else {
+                updatedMonths[index].person2_saved = savedAmount;
+            }
+            await updateDoc(savingsDocRef, { months: updatedMonths });
+        }
+    }
 
-    // Itinerary Tabs
-    const tabs = document.querySelectorAll('.tab-button');
-    const panes = document.querySelectorAll('.tab-pane');
-
-    tabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-            tabs.forEach(item => item.classList.remove('active'));
-            tab.classList.add('active');
-
-            const target = tab.getAttribute('data-tab');
-            panes.forEach(pane => {
-                if (pane.id === target) {
-                    pane.classList.remove('hidden');
-                } else {
-                    pane.classList.add('hidden');
-                }
-            });
-        });
-    });
-});
 </script>
 </body>
 </html>
